@@ -8,6 +8,7 @@ import com.warkiz.indicatorseekbar.R;
 import com.warkiz.widget.IndicatorSeekBar;
 import com.warkiz.widget.OnSeekChangeListener;
 import com.warkiz.widget.SeekParams;
+import com.warkiz.widget.ThumbTextFormatter;
 
 /**
  * created by zhuangguangquan on  2017/9/6
@@ -68,6 +69,15 @@ public class ContinuousFragment extends BaseFragment {
                 progress.setText("progress: " + seekBar.getProgress());
                 progress_float.setText("progress_float: " + seekBar.getProgressFloat());
                 from_user.setText("from_user: false");
+            }
+        });
+
+        //custom thumb text format
+        IndicatorSeekBar thumbTextSeekBar = root.findViewById(R.id.seekCustomThumbText);
+        thumbTextSeekBar.setmThumbTextFormatter(new ThumbTextFormatter() {
+            @Override
+            public String formatThumbText(float position) {
+                return "#" + position + "#";
             }
         });
     }

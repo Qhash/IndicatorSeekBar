@@ -235,6 +235,19 @@
             app:isb_track_progress_color="@color/color_blue"
             app:isb_track_progress_size="4dp" />
 
+        <TextView
+            style="@style/subtitle_text_style"
+            android:text="13. progress_value_float=true, show_thumb_text=true \n show_indicator=none, custom thumbTextFormatter" />
+
+        <com.warkiz.widget.IndicatorSeekBar
+            android:id="@+id/seekCustomThumbText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:isb_progress="76.9"
+            app:isb_progress_value_float="true"
+            app:isb_show_indicator="none"
+            app:isb_show_thumb_text="true" />
+
         <include layout="@layout/source_code_link" />
 
     </LinearLayout>

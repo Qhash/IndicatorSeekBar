@@ -50,6 +50,7 @@ public class IndicatorSeekBar extends View {
     private Paint mStockPaint;//the paint for seek bar drawing
     private TextPaint mTextPaint;//the paint for mTickTextsArr drawing
     private OnSeekChangeListener mSeekChangeListener;
+    private ThumbTextFormatter mThumbTextFormatter;
     private Rect mRect;
     private float mCustomDrawableMaxHeight;//the max height for custom drawable
     private float lastProgress;
@@ -632,7 +633,7 @@ public class IndicatorSeekBar extends View {
             return;
         }
         mTextPaint.setColor(mThumbTextColor);
-        canvas.drawText(getProgressString(mProgress), getThumbCenterX(), mThumbTextY, mTextPaint);
+        canvas.drawText(getThumbTextString(), getThumbCenterX(), mThumbTextY, mTextPaint);
     }
 
     private float getThumbCenterX() {
@@ -1542,6 +1543,14 @@ public class IndicatorSeekBar extends View {
         return getProgressString(mProgress);
     }
 
+    String getThumbTextString() {
+        if(mThumbTextFormatter != null){
+            return mThumbTextFormatter.formatThumbText(mProgress);
+        }else {
+            return getProgressString(mProgress);
+        }
+    }
+
     /*------------------API START-------------------*/
 
     /**
@@ -1988,6 +1997,10 @@ public class IndicatorSeekBar extends View {
      */
     public void setThumbAdjustAuto(boolean adjustAuto) {
         mAdjustAuto = adjustAuto;
+    }
+
+    public void setmThumbTextFormatter(ThumbTextFormatter mThumbTextFormatter) {
+        this.mThumbTextFormatter = mThumbTextFormatter;
     }
 
 
